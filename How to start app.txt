@@ -1,0 +1,20 @@
+First Start Server 
+----------------------
+cd chat-server
+npm install express cors socket.io
+node server.js
+
+عند ظهور هذه الرساله اذن السيرفر يعمل 
+Server is running on port 8080
+========================================================
+Second Start React App
+----------------------------------
+cd chat-app
+npm install socket.io-client react-router-dom
+npm start
+
+عند ظهور هذا اللينك اذن التطبيق يعمل 
+http://localhost:3000
+
+التحديث
+تم الربط ب سيرفر MongoDB لصفحه التسجيل للدخول علي صفحه الشات مباشره
