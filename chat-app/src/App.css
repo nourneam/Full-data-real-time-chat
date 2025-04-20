@@ -61,7 +61,8 @@ body {
   color: #ecf0f1;
 }
 
-.logout-button {
+.logout-button,
+.profile-button {
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.3);
   color: white;
@@ -74,8 +75,9 @@ body {
   letter-spacing: 0.5px;
 }
 
-.logout-button:hover {
-  background: rgba(255, 255, 255, 0.1);
+.logout-button:hover,
+.profile-button:hover {
+  background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
 }

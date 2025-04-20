@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import LoginPage from "./components/LoginPage";
 import ChatWithSocketIO from "./components/ChatWithSocketIO";
+import UserProfile from "./components/UserProfile"; // استيراد مكون الملف الشخصي الجديد
 
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showProfile, setShowProfile] = useState(false); // حالة جديدة لعرض صفحة الملف الشخصي
 
   const handleLoginSuccess = (username) => {
     setUser({ username });
@@ -53,6 +55,16 @@ function App() {
     setUser(null);
   };
 
+  // دالة جديدة للانتقال إلى صفحة الملف الشخصي
+  const handleViewProfile = () => {
+    setShowProfile(true);
+  };
+
+  // دالة للعودة من صفحة الملف الشخصي إلى الدردشة
+  const handleBackFromProfile = () => {
+    setShowProfile(false);
+  };
+
   if (loading) {
     return (
       <div className="loading-container">
@@ -72,13 +84,23 @@ function App() {
               <span>
                 Welcome: <strong>{user.username}</strong>
               </span>
+              <button onClick={handleViewProfile} className="profile-button">
+                My Profile{" "}
+              </button>
               <button onClick={handleLogout} className="logout-button">
-                Logout
+                logout{" "}
               </button>
             </div>
           </div>
 
-          <ChatWithSocketIO username={user.username} />
+          {showProfile ? (
+            <UserProfile
+              username={user.username}
+              onBack={handleBackFromProfile}
+            />
+          ) : (
+            <ChatWithSocketIO username={user.username} />
+          )}
         </div>
       ) : (
         <LoginPage onLoginSuccess={handleLoginSuccess} />
